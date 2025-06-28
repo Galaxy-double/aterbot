@@ -47,7 +47,8 @@ client.on(Events.InteractionCreate, async interaction => {
     try {
       const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        headless: 'new'
+        headless: true,
+        executablePath: puppeteer.executablePath() // ← utilise le Chromium inclus
       });
       const page = await browser.newPage();
 
